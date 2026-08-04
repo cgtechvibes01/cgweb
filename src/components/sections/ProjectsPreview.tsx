@@ -1,0 +1,92 @@
+"use client";
+
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { ArrowRight, Briefcase, Building2, Cpu, FileCode2 } from "lucide-react";
+import { Container } from "@/components/ui/Container";
+import { GlassCard } from "@/components/ui/GlassCard";
+import { Badge } from "@/components/ui/Badge";
+import { fadeUp } from "@/lib/animations";
+
+const PROJECTS = [
+  {
+    icon: Building2,
+    title: "BnB Super App",
+    tag: "Web App",
+    description: "Complete BnB booking management system with database sync.",
+  },
+  {
+    icon: Briefcase,
+    title: "InventCash",
+    tag: "Business Tool",
+    description: "Inventory finance webapp built for efficiency and scale.",
+  },
+  {
+    icon: FileCode2,
+    title: "License Manager",
+    tag: "Utility",
+    description: "Code licensing & management system for software products.",
+  },
+  {
+    icon: Cpu,
+    title: "Your Next Project",
+    tag: "Ready",
+    description: "Your idea, our expertise — let's build something great.",
+  },
+];
+
+export function ProjectsPreview() {
+  return (
+    <section className="py-24 md:py-32">
+      <Container>
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-100px" }}
+          className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end"
+        >
+          <div>
+            <Badge>Our work</Badge>
+            <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+              Projects that <span className="text-gradient">deliver</span>
+            </h2>
+          </div>
+          <Link
+            href="/projects"
+            className="group inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
+          >
+            View all projects
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Link>
+        </motion.div>
+
+        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {PROJECTS.map((project, i) => (
+            <motion.div
+              key={project.title}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: "-80px" }}
+              custom={i}
+            >
+              <GlassCard className="flex h-full flex-col">
+                <div className="flex items-center justify-between">
+                  <div className="bg-gradient-brand grid h-11 w-11 place-items-center rounded-xl text-white shadow-lg shadow-primary/25">
+                    <project.icon className="h-5 w-5" />
+                  </div>
+                  <Badge>{project.tag}</Badge>
+                </div>
+                <h3 className="mt-5 text-lg font-semibold">{project.title}</h3>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
+                  {project.description}
+                </p>
+              </GlassCard>
+            </motion.div>
+          ))}
+        </div>
+      </Container>
+    </section>
+  );
+}
