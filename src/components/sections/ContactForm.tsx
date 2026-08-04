@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Send } from "lucide-react";
+import { CONTACT_EMAIL } from "@/lib/constants";
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -17,7 +18,7 @@ export function ContactForm() {
     const body = encodeURIComponent(
       `Name: ${name}\nEmail: ${email}\n\n${message}`
     );
-    window.location.href = `mailto:hello@cgtechvibes.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
     setSubmitted(true);
   }
 
