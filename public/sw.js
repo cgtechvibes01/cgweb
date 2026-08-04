@@ -3,7 +3,7 @@ const CACHE_NAME = "cgweb-v1";
 const getBase = () => {
   try {
     return new URL(self.registration.scope).pathname.replace(/\/$/, "");
-  } catch (e) {
+  } catch {
     return "";
   }
 };
