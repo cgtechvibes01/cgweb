@@ -1,0 +1,155 @@
+import {
+  BarChart3,
+  Briefcase,
+  Building2,
+  Cpu,
+  FileCode2,
+  GraduationCap,
+  Layers,
+  Map,
+} from "lucide-react";
+import { BASE_PATH } from "@/lib/constants";
+import type { LucideIcon } from "lucide-react";
+
+export interface Project {
+  title: string;
+  tag: string;
+  description: string;
+  image?: string;
+  icon?: LucideIcon;
+  link: string;
+}
+
+const projectImage = (name: string) => `${BASE_PATH}/images/projects/${name}.webp`;
+
+export const PROJECTS: Project[] = [
+  {
+    icon: Building2,
+    title: "BnB Super App",
+    tag: "Web App",
+    description:
+      "A complete BnB booking management webapp — bookings, guests, inventory and database sync.",
+    image: projectImage("bnb-super-app"),
+    link: "/projects",
+  },
+  {
+    icon: Briefcase,
+    title: "InventCash",
+    tag: "Business Tool",
+    description:
+      "Inventory finance webapp with dashboard, records and reporting for smarter cash flow.",
+    link: "/projects",
+  },
+  {
+    icon: FileCode2,
+    title: "DaPen",
+    tag: "Web App",
+    description:
+      "Modern digital pen solution for capturing, managing and syncing handwritten notes.",
+    image: projectImage("dapen"),
+    link: "/projects",
+  },
+  {
+    icon: FileCode2,
+    title: "DocuGen",
+    tag: "Utility",
+    description:
+      "Document generation tool that creates clean, formatted documents in seconds.",
+    image: projectImage("docugen"),
+    link: "/projects",
+  },
+  {
+    icon: GraduationCap,
+    title: "Edu Manage Pro",
+    tag: "Web App",
+    description:
+      "Education management platform to run schools and learning institutions efficiently.",
+    image: projectImage("edu-manage-pro"),
+    link: "/projects",
+  },
+  {
+    icon: Map,
+    title: "FamTree",
+    tag: "Web App",
+    description:
+      "Family tree webapp to visualize and preserve your family history online.",
+    image: projectImage("famtree"),
+    link: "/projects",
+  },
+  {
+    icon: BarChart3,
+    title: "Movie Dashboard",
+    tag: "Web App",
+    description:
+      "Media streaming dashboard with trending picks, search and watchlist tracking.",
+    image: projectImage("movie-dashboard"),
+    link: "/projects",
+  },
+  {
+    icon: Cpu,
+    title: "POS System",
+    tag: "Business Tool",
+    description:
+      "Point-of-sale system for fast checkout, inventory and daily sales reporting.",
+    image: projectImage("pos-system"),
+    link: "/projects",
+  },
+  {
+    icon: Cpu,
+    title: "RestoMe",
+    tag: "Web App",
+    description:
+      "Restaurant management webapp covering orders, tables, menu and staff.",
+    image: projectImage("restome"),
+    link: "/projects",
+  },
+  {
+    icon: Cpu,
+    title: "Sailormen",
+    tag: "Web App",
+    description:
+      "Boat booking platform to browse vessels, check availability and reserve trips.",
+    image: projectImage("sailormen"),
+    link: "/projects",
+  },
+  {
+    icon: Layers,
+    title: "LicenseManager",
+    tag: "Utility",
+    description:
+      "Central license management tool for issuing and tracking software keys.",
+    link: "/projects",
+  },
+  {
+    icon: BarChart3,
+    title: "PWA Manager API",
+    tag: "API",
+    description:
+      "API manager backend that powers PWA and webapp integrations.",
+    link: "/projects",
+  },
+  {
+    icon: GraduationCap,
+    title: "MyMeet",
+    tag: "Web App",
+    description:
+      "Meeting management webapp to schedule, track and organize meetings effortlessly.",
+    link: "/projects",
+  },
+  {
+    icon: FileCode2,
+    title: "CGCodeLicenser",
+    tag: "Utility",
+    description:
+      "Code licensing system that protects and manages software product licenses.",
+    link: "/projects",
+  },
+  {
+    icon: Cpu,
+    title: "Your Next Project",
+    tag: "Ready",
+    description:
+      "Have an idea? Let's turn it into a modern digital product together.",
+    link: "/contact",
+  },
+];

@@ -2,38 +2,17 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Briefcase, Building2, Cpu, FileCode2 } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Badge } from "@/components/ui/Badge";
 import { fadeUp } from "@/lib/animations";
+import { PROJECTS } from "@/lib/projects";
 
-const PROJECTS = [
-  {
-    icon: Building2,
-    title: "BnB Super App",
-    tag: "Web App",
-    description: "Complete BnB booking management system with database sync.",
-  },
-  {
-    icon: Briefcase,
-    title: "InventCash",
-    tag: "Business Tool",
-    description: "Inventory finance webapp built for efficiency and scale.",
-  },
-  {
-    icon: FileCode2,
-    title: "License Manager",
-    tag: "Utility",
-    description: "Code licensing & management system for software products.",
-  },
-  {
-    icon: Cpu,
-    title: "Your Next Project",
-    tag: "Ready",
-    description: "Your idea, our expertise — let's build something great.",
-  },
-];
+const FEATURED = ["BnB Super App", "FamTree", "RestoMe", "Sailormen"];
+
+const featured = PROJECTS.filter((p) => FEATURED.includes(p.title));
 
 export function ProjectsPreview() {
   return (
@@ -62,7 +41,7 @@ export function ProjectsPreview() {
         </motion.div>
 
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {PROJECTS.map((project, i) => (
+          {featured.map((project, i) => (
             <motion.div
               key={project.title}
               variants={fadeUp}
@@ -71,14 +50,22 @@ export function ProjectsPreview() {
               viewport={{ once: true, margin: "-80px" }}
               custom={i}
             >
-              <GlassCard className="flex h-full flex-col">
-                <div className="flex items-center justify-between">
-                  <div className="bg-gradient-brand grid h-11 w-11 place-items-center rounded-xl text-white shadow-lg shadow-primary/25">
-                    <project.icon className="h-5 w-5" />
+              <GlassCard className="group flex h-full flex-col">
+                {project.image && (
+                  <div className="relative aspect-[2/1] w-full overflow-hidden rounded-xl">
+                    <Image
+                      src={project.image}
+                      alt={`${project.title} preview`}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    />
                   </div>
+                )}
+                <div className="mt-5 flex items-center justify-between">
+                  <h3 className="text-lg font-semibold">{project.title}</h3>
                   <Badge>{project.tag}</Badge>
                 </div>
-                <h3 className="mt-5 text-lg font-semibold">{project.title}</h3>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
                   {project.description}
                 </p>
