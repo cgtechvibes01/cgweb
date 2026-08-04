@@ -44,27 +44,24 @@ export function FBInAppBrowserGuard({ url, children }: FBInAppBrowserGuardProps)
   if (!inApp) return <>{children}</>;
 
   const target = url || (typeof window !== "undefined" ? window.location.href : "");
+  const isIOS =
+    typeof navigator !== "undefined" && /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+  // Android: guna intent:// Chrome. iOS: guna x-safari- untuk buka Safari terus.
+  const chromeUrl = isIOS
+    ? `x-safari-${target}`
+    : `intent://${target.replace(
+        /^https?:\/\//,
+        ""
+      )}#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=${encodeURIComponent(
+        target
+      )};end`;
 
   const copyLink = async () => {
     try {
       await navigator.clipboard.writeText(target);
     } catch {
       /* clipboard unavailable in some webviews */
-    }
-  };
-
-  const openExternal = () => {
-    if (typeof window === "undefined") return;
-    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-    if (isIOS) {
-      window.location.href = `x-safari-${target}`;
-    } else {
-      window.location.href = `intent://${target.replace(
-        /^https?:\/\//,
-        ""
-      )}#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=${encodeURIComponent(
-        target
-      )};end`;
     }
   };
 
@@ -83,13 +80,13 @@ export function FBInAppBrowserGuard({ url, children }: FBInAppBrowserGuardProps)
         </p>
 
         <div className="mt-8 flex flex-col gap-3">
-          <button
-            onClick={openExternal}
+          <a
+            href={chromeUrl}
             className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-brand px-6 py-3 text-sm font-semibold text-white shadow-md shadow-primary/25 transition-all duration-300 hover:brightness-110 active:scale-95"
           >
             <ExternalLink className="h-4 w-4" />
             Open in Chrome
-          </button>
+          </a>
           <button
             onClick={copyLink}
             className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition-all duration-300 hover:bg-white/15 active:scale-95"
