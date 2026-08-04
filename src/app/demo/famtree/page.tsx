@@ -36,7 +36,7 @@ export default function FamTreeDemoPage() {
         href={ORDER_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-4 z-[70] inline-flex items-center gap-1.5 rounded-full bg-green-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-green-500/30 transition-all duration-300 hover:brightness-110 active:scale-95"
+        className="fixed bottom-24 right-4 z-[70] inline-flex items-center gap-1.5 rounded-full bg-green-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-green-500/30 transition-all duration-300 hover:brightness-110 active:scale-95 md:bottom-6"
       >
         <MessageCircle className="h-4 w-4" />
         Order Now
