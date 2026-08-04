@@ -9,11 +9,22 @@ export interface Project {
   image?: string;
   icon?: LucideIcon;
   link: string;
+  href?: string;
 }
 
 const projectImage = (name: string) => `${BASE_PATH}/images/projects/${name}.webp`;
 
 export const PROJECTS: Project[] = [
+  {
+    icon: Map,
+    title: "FamTree",
+    tag: "Web App",
+    description:
+      "Family tree webapp to visualize and preserve your family history online.",
+    image: projectImage("famtree"),
+    link: "/projects/famtree",
+    href: "/projects/famtree",
+  },
   {
     icon: Building2,
     title: "BnB Super App",
@@ -48,15 +59,6 @@ export const PROJECTS: Project[] = [
     description:
       "Education management platform to run schools and learning institutions efficiently.",
     image: projectImage("edu-manage-pro"),
-    link: "/projects",
-  },
-  {
-    icon: Map,
-    title: "FamTree",
-    tag: "Web App",
-    description:
-      "Family tree webapp to visualize and preserve your family history online.",
-    image: projectImage("famtree"),
     link: "/projects",
   },
   {
