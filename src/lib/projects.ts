@@ -1,13 +1,4 @@
-import {
-  BarChart3,
-  Briefcase,
-  Building2,
-  Cpu,
-  FileCode2,
-  GraduationCap,
-  Layers,
-  Map,
-} from "lucide-react";
+import { Building2, Cpu, FileCode2, GraduationCap, Map, BarChart3 } from "lucide-react";
 import { BASE_PATH } from "@/lib/constants";
 import type { LucideIcon } from "lucide-react";
 
@@ -30,14 +21,6 @@ export const PROJECTS: Project[] = [
     description:
       "A complete BnB booking management webapp — bookings, guests, inventory and database sync.",
     image: projectImage("bnb-super-app"),
-    link: "/projects",
-  },
-  {
-    icon: Briefcase,
-    title: "InventCash",
-    tag: "Business Tool",
-    description:
-      "Inventory finance webapp with dashboard, records and reporting for smarter cash flow.",
     link: "/projects",
   },
   {
@@ -110,38 +93,6 @@ export const PROJECTS: Project[] = [
     description:
       "Boat booking platform to browse vessels, check availability and reserve trips.",
     image: projectImage("sailormen"),
-    link: "/projects",
-  },
-  {
-    icon: Layers,
-    title: "LicenseManager",
-    tag: "Utility",
-    description:
-      "Central license management tool for issuing and tracking software keys.",
-    link: "/projects",
-  },
-  {
-    icon: BarChart3,
-    title: "PWA Manager API",
-    tag: "API",
-    description:
-      "API manager backend that powers PWA and webapp integrations.",
-    link: "/projects",
-  },
-  {
-    icon: GraduationCap,
-    title: "MyMeet",
-    tag: "Web App",
-    description:
-      "Meeting management webapp to schedule, track and organize meetings effortlessly.",
-    link: "/projects",
-  },
-  {
-    icon: FileCode2,
-    title: "CGCodeLicenser",
-    tag: "Utility",
-    description:
-      "Code licensing system that protects and manages software product licenses.",
     link: "/projects",
   },
   {
