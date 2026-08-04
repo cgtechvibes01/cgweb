@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Send } from "lucide-react";
-import { CONTACT_EMAIL } from "@/lib/constants";
+import { MessageCircle } from "lucide-react";
+import { WHATSAPP_URL } from "@/lib/constants";
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -14,25 +14,43 @@ export function ContactForm() {
     const name = data.get("name");
     const email = data.get("email");
     const message = data.get("message");
-    const subject = encodeURIComponent(`New inquiry from ${name}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\n\n${message}`
+
+    const text = [
+      "Hi CGTechVibes! 👋",
+      "",
+      "*Name:* " + name,
+      "*Email:* " + email,
+      "",
+      "*Message:*",
+      message,
+    ].join("\n");
+
+    window.open(
+      `${WHATSAPP_URL}?text=${encodeURIComponent(text)}`,
+      "_blank",
+      "noopener,noreferrer"
     );
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
     setSubmitted(true);
   }
 
   if (submitted) {
     return (
       <div className="flex min-h-64 flex-col items-center justify-center text-center">
-        <div className="bg-gradient-brand mb-4 grid h-14 w-14 place-items-center rounded-2xl text-white shadow-lg shadow-primary/25">
-          <Send className="h-6 w-6" />
+        <div className="mb-4 grid h-14 w-14 place-items-center rounded-2xl bg-green-500 text-white shadow-lg shadow-green-500/25">
+          <MessageCircle className="h-6 w-6" />
         </div>
-        <h2 className="text-xl font-semibold">Message prepared!</h2>
+        <h2 className="text-xl font-semibold">WhatsApp opened!</h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          Your email app should have opened with your message. We reply within
+          Your message is ready in WhatsApp — just press send. We reply within
           24 hours.
         </p>
+        <button
+          type="button"
+          onClick={() => setSubmitted(false)}
+          className="mt-5 text-sm font-semibold text-primary hover:underline"
+        >
+          Send another message
+        </button>
       </div>
     );
   }
@@ -82,10 +100,10 @@ export function ContactForm() {
       </div>
       <button
         type="submit"
-        className="bg-gradient-brand inline-flex w-full items-center justify-center gap-2 rounded-xl px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-primary/25 transition-all duration-300 hover:shadow-xl hover:shadow-primary/40 hover:brightness-110 active:scale-95 sm:w-auto"
+        className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-green-500 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-green-500/25 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/40 hover:brightness-110 active:scale-95 sm:w-auto"
       >
-        <Send className="h-4 w-4" />
-        Send message
+        <MessageCircle className="h-4 w-4" />
+        Send via WhatsApp
       </button>
     </form>
   );
