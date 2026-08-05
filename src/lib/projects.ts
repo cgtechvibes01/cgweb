@@ -27,12 +27,13 @@ export const PROJECTS: Project[] = [
   },
   {
     icon: Building2,
-    title: "BnB Super App",
+    title: "BNB Manager",
     tag: "Web App",
     description:
       "A complete BnB booking management webapp — bookings, guests, inventory and database sync.",
-    image: projectImage("bnb-super-app"),
-    link: "/projects",
+    image: projectImage("bnb-manager"),
+    link: "/projects/bnb-manager",
+    href: "/projects/bnb-manager",
   },
   {
     icon: FileCode2,

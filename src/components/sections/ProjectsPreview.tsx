@@ -10,7 +10,7 @@ import { Badge } from "@/components/ui/Badge";
 import { fadeUp } from "@/lib/animations";
 import { PROJECTS } from "@/lib/projects";
 
-const FEATURED = ["BnB Super App", "FamTree", "RestoMe", "Sailormen"];
+const FEATURED = ["BNB Manager", "FamTree", "RestoMe", "Sailormen"];
 
 const featured = PROJECTS.filter((p) => FEATURED.includes(p.title));
 
