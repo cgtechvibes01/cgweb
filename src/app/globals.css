@@ -122,6 +122,13 @@
     border: 1px solid var(--border);
   }
 
+  .glass-nav-top {
+    background: color-mix(in oklch, var(--surface) 30%, transparent);
+    backdrop-filter: blur(32px) saturate(1.4);
+    -webkit-backdrop-filter: blur(32px) saturate(1.4);
+    border: 1px solid var(--border);
+  }
+
   /* Gradient text */
   .text-gradient {
     background-image: linear-gradient(
