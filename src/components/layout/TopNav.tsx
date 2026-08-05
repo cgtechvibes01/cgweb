@@ -15,7 +15,7 @@ export function TopNav() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 pt-safe">
       <nav className="mx-auto mt-3 w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="glass-strong flex h-16 items-center justify-between rounded-2xl px-4 sm:px-6">
+        <div className="glass-nav flex h-16 items-center justify-between rounded-2xl px-4 sm:px-6">
           <Logo />
 
           <div className="hidden items-center gap-1 md:flex">
