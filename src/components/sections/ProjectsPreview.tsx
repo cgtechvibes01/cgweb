@@ -60,6 +60,9 @@ export function ProjectsPreview() {
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                       className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                     />
+                    <div className="absolute left-3 top-3 z-10 grid h-10 w-10 place-items-center rounded-xl bg-black/60 text-white shadow-lg backdrop-blur">
+                      {project.icon && <project.icon className="h-5 w-5" />}
+                    </div>
                   </div>
                 )}
                 <div className="mt-5 flex items-center justify-between">

@@ -37,16 +37,21 @@ export default function ProjectsPage() {
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                       />
+                      <div className="absolute left-3 top-3 z-10 grid h-10 w-10 place-items-center rounded-xl bg-black/60 text-white shadow-lg backdrop-blur">
+                        {project.icon && <project.icon className="h-5 w-5" />}
+                      </div>
                     </div>
                   )}
                   <div className="flex items-center justify-between">
-                    <div className="bg-gradient-brand grid h-12 w-12 place-items-center rounded-xl text-white shadow-lg shadow-primary/25 transition-transform duration-300 group-hover:scale-110">
-                      {project.icon ? (
-                        <project.icon className="h-6 w-6" />
-                      ) : (
-                        <ArrowUpRight className="h-6 w-6" />
-                      )}
-                    </div>
+                    {!project.image && (
+                      <div className="bg-gradient-brand grid h-12 w-12 place-items-center rounded-xl text-white shadow-lg shadow-primary/25 transition-transform duration-300 group-hover:scale-110">
+                        {project.icon ? (
+                          <project.icon className="h-6 w-6" />
+                        ) : (
+                          <ArrowUpRight className="h-6 w-6" />
+                        )}
+                      </div>
+                    )}
                     <Badge>{project.tag}</Badge>
                   </div>
                   <h2 className="mt-5 text-lg font-semibold">{project.title}</h2>
