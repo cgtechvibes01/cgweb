@@ -40,9 +40,10 @@ export const PROJECTS: Project[] = [
     title: "DaPen",
     tag: "Web App",
     description:
-      "Modern digital pen solution for capturing, managing and syncing handwritten notes.",
+      "Digital census webapp for community profiling — smart resident intake, area directories and instant search for administrators.",
     image: projectImage("dapen"),
-    link: "/projects",
+    link: "/projects/dapen",
+    href: "/projects/dapen",
   },
   {
     icon: FileCode2,
