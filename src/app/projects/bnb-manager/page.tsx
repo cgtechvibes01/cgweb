@@ -12,7 +12,7 @@ import { WHATSAPP_URL } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "BNB Manager",
   description:
-    "Explore the BNB Manager webapp — run your BnB smoothly with bookings, guests, inventory and database sync in one place.",
+    "Explore the BNB Manager webapp — run your BnB smoothly with bookings, guests, housekeeping and database sync in one place.",
 };
 
 const BNB = PROJECTS.find((p) => p.title === "BNB Manager")!;
@@ -32,9 +32,9 @@ const FEATURES = [
   },
   {
     icon: Boxes,
-    title: "Inventory Sync",
+    title: "Housekeeping Sync",
     description:
-      "Stay on top of supplies and restock before you run out.",
+      "Auto Remark unit as dirty upon customer check Out.",
   },
   {
     icon: ShieldCheck,
@@ -54,7 +54,7 @@ export default function BnbManagerPage() {
       <PageHeader
         badge="Project"
         title="BNB Manager"
-        subtitle="A complete BnB booking management webapp — bookings, guests, inventory and database sync."
+        subtitle="A complete BnB booking management webapp — bookings, guests, Housekeeping and database sync."
       />
 
       <section className="pb-24 md:pb-32">
@@ -103,7 +103,7 @@ export default function BnbManagerPage() {
                 </h2>
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
                   BNB Manager is a booking management webapp built to keep your
-                  BnB running smoothly. Handle bookings, guests and inventory
+                  BnB running smoothly. Handle bookings, guests and Housekeeping
                   from a single clean dashboard — with data that stays synced
                   and backed up.
                 </p>
