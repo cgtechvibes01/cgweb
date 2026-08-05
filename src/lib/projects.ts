@@ -30,7 +30,7 @@ export const PROJECTS: Project[] = [
     title: "BNB Manager",
     tag: "Web App",
     description:
-      "A complete BnB booking management webapp — bookings, guests, inventory and database sync.",
+      "A complete BnB booking management webapp — bookings, guests, housekeeping and database sync.",
     image: projectImage("bnb-manager"),
     link: "/projects/bnb-manager",
     href: "/projects/bnb-manager",
