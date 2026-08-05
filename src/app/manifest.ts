@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { SITE_NAME, SITE_DESCRIPTION, BASE_PATH } from "@/lib/constants";
+import { SITE_DESCRIPTION, BASE_PATH } from "@/lib/constants";
 
 export const dynamic = "force-static";
 

@@ -6,6 +6,8 @@ import { cn } from "@/lib/utils";
 import { NAV_LINKS } from "@/lib/constants";
 import { Logo } from "@/components/layout/Logo";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
+import { ShareButton } from "@/components/layout/ShareButton";
+import { InstallButton } from "@/components/layout/InstallButton";
 
 export function TopNav() {
   const pathname = usePathname();
@@ -36,7 +38,11 @@ export function TopNav() {
             })}
           </div>
 
-          <ThemeToggle />
+          <div className="flex items-center gap-2">
+            <ShareButton />
+            <InstallButton />
+            <ThemeToggle />
+          </div>
         </div>
       </nav>
     </header>
