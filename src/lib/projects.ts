@@ -80,7 +80,8 @@ export const PROJECTS: Project[] = [
     description:
       "Point-of-sale system for fast checkout, inventory and daily sales reporting.",
     image: projectImage("pos-system"),
-    link: "/projects",
+    link: "/projects/pos-system",
+    href: "/projects/pos-system",
   },
   {
     icon: Cpu,
@@ -99,7 +100,8 @@ export const PROJECTS: Project[] = [
     description:
       "Boat booking platform to browse vessels, check availability and reserve trips.",
     image: projectImage("sailormen"),
-    link: "/projects",
+    link: "/projects/sailormen",
+    href: "/projects/sailormen",
   },
   {
     icon: Cpu,
