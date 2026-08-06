@@ -18,7 +18,7 @@ const ORDER_URL = `${WHATSAPP_URL}?text=${encodeURIComponent(
 
 export default function BnbManagerDemoPage() {
   return (
-    <div className="pb-safe fixed inset-0 z-[60] flex flex-col bg-white">
+    <div className="fixed inset-0 z-[60] flex flex-col bg-white">
       <div className="pt-safe z-10 flex items-center justify-end gap-2 bg-black/70 px-4 pb-2 backdrop-blur">
         <Link
           href="/"
