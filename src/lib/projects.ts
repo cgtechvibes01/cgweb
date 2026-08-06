@@ -89,7 +89,8 @@ export const PROJECTS: Project[] = [
     description:
       "Restaurant management webapp covering orders, tables, menu and staff.",
     image: projectImage("restome"),
-    link: "/projects",
+    link: "/projects/restome",
+    href: "/projects/restome",
   },
   {
     icon: Cpu,
