@@ -46,21 +46,22 @@ export const PROJECTS: Project[] = [
     href: "/projects/dapen",
   },
   {
-    icon: FileCode2,
-    title: "DocuGen",
-    tag: "Utility",
-    description:
-      "Document generation tool that creates clean, formatted documents in seconds.",
-    image: projectImage("docugen"),
-    link: "/projects",
-  },
-  {
     icon: GraduationCap,
     title: "Edu Manage Pro",
     tag: "Web App",
     description:
       "Education management platform to run schools and learning institutions efficiently.",
     image: projectImage("edu-manage-pro"),
+    link: "/demo/edu-manage-pro",
+    href: "/demo/edu-manage-pro",
+  },
+  {
+    icon: FileCode2,
+    title: "DocuGen",
+    tag: "Utility",
+    description:
+      "Document generation tool that creates clean, formatted documents in seconds.",
+    image: projectImage("docugen"),
     link: "/projects",
   },
   {
