@@ -52,8 +52,8 @@ export const PROJECTS: Project[] = [
     description:
       "Education management platform to run schools and learning institutions efficiently.",
     image: projectImage("edu-manage-pro"),
-    link: "/demo/edu-manage-pro",
-    href: "/demo/edu-manage-pro",
+    link: "/projects/edu-manage-pro",
+    href: "/projects/edu-manage-pro",
   },
   {
     icon: FileCode2,
