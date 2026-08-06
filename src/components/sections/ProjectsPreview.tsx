@@ -28,7 +28,7 @@ export function ProjectsPreview() {
           <div>
             <Badge>Our work</Badge>
             <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
-              Projects that <span className="text-gradient">deliver</span>
+              Fresh from the <span className="text-gradient">studio</span>
             </h2>
           </div>
           <Link
