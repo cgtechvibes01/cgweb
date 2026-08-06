@@ -18,17 +18,11 @@ const ORDER_URL = `${WHATSAPP_URL}?text=${encodeURIComponent(
 
 export default function BnbManagerDemoPage() {
   return (
-    <div className="fixed inset-0 z-[60]">
-      <iframe
-        src={DEMO_URL}
-        title="BNB Manager Demo"
-        className="h-full w-full border-0 bg-white"
-        allow="clipboard-read; clipboard-write"
-      />
-      <div className="fixed right-4 top-4 z-[70] flex items-center gap-2">
+    <div className="pb-safe fixed inset-0 z-[60] flex flex-col bg-white">
+      <div className="pt-safe z-10 flex items-center justify-end gap-2 bg-black/70 px-4 pb-2 backdrop-blur">
         <Link
           href="/"
-          className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-black/70 px-4 py-2 text-sm font-semibold text-white shadow-lg backdrop-blur transition-all duration-300 hover:bg-black/85 active:scale-95"
+          className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-black/60 px-4 py-2 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:bg-black/85 active:scale-95"
         >
           <Home className="h-4 w-4" />
           Back to Home
@@ -43,6 +37,12 @@ export default function BnbManagerDemoPage() {
           Order Now
         </a>
       </div>
+      <iframe
+        src={DEMO_URL}
+        title="BNB Manager Demo"
+        className="h-full w-full flex-1 border-0 bg-white"
+        allow="clipboard-read; clipboard-write"
+      />
     </div>
   );
 }
