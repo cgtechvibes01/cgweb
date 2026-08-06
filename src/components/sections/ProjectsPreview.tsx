@@ -30,6 +30,9 @@ export function ProjectsPreview() {
             <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
               Fresh from the <span className="text-gradient">studio</span>
             </h2>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
+              Our recent projects, including the latest updates
+            </p>
           </div>
           <Link
             href="/projects"
