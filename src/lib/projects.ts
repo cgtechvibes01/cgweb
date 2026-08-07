@@ -57,7 +57,7 @@ export const PROJECTS: Project[] = [
   },
   {
     icon: FileCode2,
-    title: "DocuGen",
+    title: "DocGen (E-Biz)",
     tag: "Utility",
     description:
       "Document generation tool that creates clean, formatted documents in seconds.",
