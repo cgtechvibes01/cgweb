@@ -43,6 +43,12 @@ export default function ContactPage() {
       <section className="pb-24 md:pb-32">
         <Container>
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-5">
+            <div className="lg:col-span-3">
+              <GlassCard hover={false}>
+                <ContactForm />
+              </GlassCard>
+            </div>
+
             <div className="space-y-6 lg:col-span-2">
               {INFO.map((item) => (
                 <GlassCard key={item.label} hover={false}>
@@ -97,12 +103,6 @@ export default function ContactPage() {
                     </div>
                   </div>
                 </div>
-              </GlassCard>
-            </div>
-
-            <div className="lg:col-span-3">
-              <GlassCard hover={false}>
-                <ContactForm />
               </GlassCard>
             </div>
           </div>

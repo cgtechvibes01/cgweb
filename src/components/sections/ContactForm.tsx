@@ -57,6 +57,14 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
+      <div>
+        <h2 className="text-xl font-bold tracking-tight">
+          Message to Us on WhatsApp
+        </h2>
+        <p className="mt-1 text-sm text-muted-foreground">
+          Send us a message and we&apos;ll reply within 24 hours.
+        </p>
+      </div>
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className="mb-1.5 block text-sm font-medium">
