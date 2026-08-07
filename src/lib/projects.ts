@@ -1,4 +1,4 @@
-import { Building2, Cpu, FileCode2, GraduationCap, Map, BarChart3 } from "lucide-react";
+import { Building2, Cpu, FileCode2, FileText, GraduationCap, Map, BarChart3 } from "lucide-react";
 import { BASE_PATH } from "@/lib/constants";
 import type { LucideIcon } from "lucide-react";
 
@@ -56,13 +56,14 @@ export const PROJECTS: Project[] = [
     href: "/projects/edu-manage-pro",
   },
   {
-    icon: FileCode2,
+    icon: FileText,
     title: "DocGen (E-Biz)",
     tag: "Utility",
     description:
-      "Document generation tool that creates clean, formatted documents in seconds.",
+      "Document generation webapp that creates payslips, receipts, invoices and quotations in seconds.",
     image: projectImage("docugen"),
-    link: "/projects",
+    link: "/projects/docgen-e-biz",
+    href: "/projects/docgen-e-biz",
   },
   {
     icon: BarChart3,
