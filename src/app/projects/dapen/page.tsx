@@ -1,18 +1,18 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { MessageCircle, Play, ClipboardList, MapPin, Search, ShieldCheck } from "lucide-react";
+import { Play, ClipboardList, MapPin, Search, ShieldCheck } from "lucide-react";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Badge } from "@/components/ui/Badge";
 import { Container } from "@/components/ui/Container";
+import { OrderModal } from "@/components/sections/OrderModal";
 import { PROJECTS } from "@/lib/projects";
-import { WHATSAPP_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "DaPen",
   description:
-    "Explore the DaPen webapp — a digital census system for community profiling and aid administration, built for village councils and residential associations.",
+    "Explore the DaPen webapp â€” a digital census system for community profiling and aid administration, built for village councils and residential associations.",
 };
 
 const DAPEN = PROJECTS.find((p) => p.title === "DaPen")!;
@@ -43,10 +43,6 @@ const FEATURES = [
       "Automated database setup, secure user management and an action log for system changes.",
   },
 ];
-
-const ORDER_URL = `${WHATSAPP_URL}?text=${encodeURIComponent(
-  "Hi CGTechVibes! I'm interested in the DaPen webapp. Can you tell me more?"
-)}`;
 
 export default function DaPenPage() {
   return (
@@ -83,15 +79,7 @@ export default function DaPenPage() {
                   <Play className="h-4 w-4" />
                   Demo
                 </Link>
-                <a
-                  href={ORDER_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-green-500 px-6 py-3 text-sm font-semibold text-white shadow-md shadow-green-500/25 transition-all duration-300 hover:brightness-110 active:scale-95"
-                >
-                  <MessageCircle className="h-4 w-4" />
-                  Order Now
-                </a>
+                <OrderModal projectTitle="DaPen" />
               </div>
             </div>
 
@@ -137,15 +125,7 @@ export default function DaPenPage() {
                 ))}
               </div>
 
-              <a
-                href={ORDER_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
-              >
-                <MessageCircle className="h-4 w-4" />
-                Interested? Order DaPen on WhatsApp
-              </a>
+              <OrderModal projectTitle="DaPen" variant="link" />
             </div>
           </div>
         </Container>
@@ -153,3 +133,4 @@ export default function DaPenPage() {
     </>
   );
 }
+

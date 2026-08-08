@@ -1,18 +1,18 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { MessageCircle, Play, ShoppingCart, Boxes, BarChart3, ScanLine } from "lucide-react";
+import { Play, ShoppingCart, Boxes, BarChart3, ScanLine } from "lucide-react";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Badge } from "@/components/ui/Badge";
 import { Container } from "@/components/ui/Container";
+import { OrderModal } from "@/components/sections/OrderModal";
 import { PROJECTS } from "@/lib/projects";
-import { WHATSAPP_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "POS System",
   description:
-    "Explore the POS System webapp — a point-of-sale system for fast checkout, inventory and daily sales reporting.",
+    "Explore the POS System webapp â€” a point-of-sale system for fast checkout, inventory and daily sales reporting.",
 };
 
 const POS = PROJECTS.find((p) => p.title === "POS System")!;
@@ -43,10 +43,6 @@ const FEATURES = [
       "Designed for quick, reliable operation at the counter every day.",
   },
 ];
-
-const ORDER_URL = `${WHATSAPP_URL}?text=${encodeURIComponent(
-  "Hi CGTechVibes! I'm interested in the POS System webapp. Can you tell me more?"
-)}`;
 
 export default function PosSystemPage() {
   return (
@@ -83,15 +79,7 @@ export default function PosSystemPage() {
                   <Play className="h-4 w-4" />
                   Demo
                 </Link>
-                <a
-                  href={ORDER_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-green-500 px-6 py-3 text-sm font-semibold text-white shadow-md shadow-green-500/25 transition-all duration-300 hover:brightness-110 active:scale-95"
-                >
-                  <MessageCircle className="h-4 w-4" />
-                  Order Now
-                </a>
+                <OrderModal projectTitle="POS System" />
               </div>
             </div>
 
@@ -104,7 +92,7 @@ export default function PosSystemPage() {
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
                   POS System is a point-of-sale webapp built to speed up the
                   counter and keep your business data in check. Handle sales,
-                  inventory and daily reporting from one simple dashboard —
+                  inventory and daily reporting from one simple dashboard â€”
                   reliable from opening to closing time.
                 </p>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
@@ -130,15 +118,7 @@ export default function PosSystemPage() {
                 ))}
               </div>
 
-              <a
-                href={ORDER_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
-              >
-                <MessageCircle className="h-4 w-4" />
-                Interested? Order POS System on WhatsApp
-              </a>
+              <OrderModal projectTitle="POS System" variant="link" />
             </div>
           </div>
         </Container>
@@ -146,3 +126,4 @@ export default function PosSystemPage() {
     </>
   );
 }
+

@@ -1,18 +1,18 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { MessageCircle, Play, Users, Share2, History, HeartHandshake } from "lucide-react";
+import { Play, Users, Share2, History, HeartHandshake } from "lucide-react";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Badge } from "@/components/ui/Badge";
 import { Container } from "@/components/ui/Container";
+import { OrderModal } from "@/components/sections/OrderModal";
 import { PROJECTS } from "@/lib/projects";
-import { WHATSAPP_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "FamTree",
   description:
-    "Explore the FamTree webapp — visualize and preserve your family history online with an interactive family tree.",
+    "Explore the FamTree webapp â€” visualize and preserve your family history online with an interactive family tree.",
 };
 
 const FAMTREE = PROJECTS.find((p) => p.title === "FamTree")!;
@@ -40,13 +40,9 @@ const FEATURES = [
     icon: HeartHandshake,
     title: "Simple to Use",
     description:
-      "No technical skill needed — add members and build your tree in minutes.",
+      "No technical skill needed â€” add members and build your tree in minutes.",
   },
 ];
-
-const ORDER_URL = `${WHATSAPP_URL}?text=${encodeURIComponent(
-  "Hi CGTechVibes! I'm interested in the FamTree webapp. Can you tell me more?"
-)}`;
 
 export default function FamTreePage() {
   return (
@@ -83,15 +79,7 @@ export default function FamTreePage() {
                   <Play className="h-4 w-4" />
                   Demo
                 </Link>
-                <a
-                  href={ORDER_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-green-500 px-6 py-3 text-sm font-semibold text-white shadow-md shadow-green-500/25 transition-all duration-300 hover:brightness-110 active:scale-95"
-                >
-                  <MessageCircle className="h-4 w-4" />
-                  Order Now
-                </a>
+                <OrderModal projectTitle="FamTree" />
               </div>
             </div>
 
@@ -104,7 +92,7 @@ export default function FamTreePage() {
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
                   FamTree is a family tree webapp that makes it easy to record and
                   explore your family history. Build branches, add members and watch
-                  your lineage come to life — all in one clean, modern interface.
+                  your lineage come to life â€” all in one clean, modern interface.
                 </p>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   Try the live{" "}
@@ -129,15 +117,7 @@ export default function FamTreePage() {
                 ))}
               </div>
 
-              <a
-                href={ORDER_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
-              >
-                <MessageCircle className="h-4 w-4" />
-                Interested? Order FamTree on WhatsApp
-              </a>
+              <OrderModal projectTitle="FamTree" variant="link" />
             </div>
           </div>
         </Container>
@@ -145,3 +125,4 @@ export default function FamTreePage() {
     </>
   );
 }
+

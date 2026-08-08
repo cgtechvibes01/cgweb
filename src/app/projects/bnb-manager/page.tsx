@@ -1,18 +1,18 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { MessageCircle, Play, CalendarDays, BedDouble, Boxes, ShieldCheck } from "lucide-react";
+import { Play, CalendarDays, BedDouble, Boxes, ShieldCheck } from "lucide-react";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Badge } from "@/components/ui/Badge";
 import { Container } from "@/components/ui/Container";
+import { OrderModal } from "@/components/sections/OrderModal";
 import { PROJECTS } from "@/lib/projects";
-import { WHATSAPP_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "BNB Manager",
   description:
-    "Explore the BNB Manager webapp — run your BnB smoothly with bookings, guests, housekeeping and database sync in one place.",
+    "Explore the BNB Manager webapp â€” run your BnB smoothly with bookings, guests, housekeeping and database sync in one place.",
 };
 
 const BNB = PROJECTS.find((p) => p.title === "BNB Manager")!;
@@ -44,17 +44,13 @@ const FEATURES = [
   },
 ];
 
-const ORDER_URL = `${WHATSAPP_URL}?text=${encodeURIComponent(
-  "Hi CGTechVibes! I'm interested in the BNB Manager webapp. Can you tell me more?"
-)}`;
-
 export default function BnbManagerPage() {
   return (
     <>
       <PageHeader
         badge="Project"
         title="BNB Manager"
-        subtitle="A complete BnB booking management webapp — bookings, guests, Housekeeping and database sync."
+        subtitle="A complete BnB booking management webapp â€” bookings, guests, Housekeeping and database sync."
       />
 
       <section className="pb-24 md:pb-32">
@@ -83,15 +79,7 @@ export default function BnbManagerPage() {
                   <Play className="h-4 w-4" />
                   Demo
                 </Link>
-                <a
-                  href={ORDER_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-green-500 px-6 py-3 text-sm font-semibold text-white shadow-md shadow-green-500/25 transition-all duration-300 hover:brightness-110 active:scale-95"
-                >
-                  <MessageCircle className="h-4 w-4" />
-                  Order Now
-                </a>
+                <OrderModal projectTitle="BNB Manager" />
               </div>
             </div>
 
@@ -104,7 +92,7 @@ export default function BnbManagerPage() {
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
                   BNB Manager is a booking management webapp built to keep your
                   BnB running smoothly. Handle bookings, guests and Housekeeping
-                  from a single clean dashboard — with data that stays synced
+                  from a single clean dashboard â€” with data that stays synced
                   and backed up.
                 </p>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
@@ -130,15 +118,7 @@ export default function BnbManagerPage() {
                 ))}
               </div>
 
-              <a
-                href={ORDER_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
-              >
-                <MessageCircle className="h-4 w-4" />
-                Interested? Order BNB Manager on WhatsApp
-              </a>
+              <OrderModal projectTitle="BNB Manager" variant="link" />
             </div>
           </div>
         </Container>
@@ -146,3 +126,4 @@ export default function BnbManagerPage() {
     </>
   );
 }
+

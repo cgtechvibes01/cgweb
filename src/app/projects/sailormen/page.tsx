@@ -1,18 +1,18 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { MessageCircle, Play, Ship, CalendarCheck, Compass, LifeBuoy } from "lucide-react";
+import { Play, Ship, CalendarCheck, Compass, LifeBuoy } from "lucide-react";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Badge } from "@/components/ui/Badge";
 import { Container } from "@/components/ui/Container";
+import { OrderModal } from "@/components/sections/OrderModal";
 import { PROJECTS } from "@/lib/projects";
-import { WHATSAPP_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Sailormen",
   description:
-    "Explore the Sailormen webapp — a boat booking platform to browse vessels, check availability and reserve trips.",
+    "Explore the Sailormen webapp â€” a boat booking platform to browse vessels, check availability and reserve trips.",
 };
 
 const SAILOR = PROJECTS.find((p) => p.title === "Sailormen")!;
@@ -43,10 +43,6 @@ const FEATURES = [
       "A straightforward platform built for smooth on-water bookings.",
   },
 ];
-
-const ORDER_URL = `${WHATSAPP_URL}?text=${encodeURIComponent(
-  "Hi CGTechVibes! I'm interested in the Sailormen webapp. Can you tell me more?"
-)}`;
 
 export default function SailormenPage() {
   return (
@@ -83,15 +79,7 @@ export default function SailormenPage() {
                   <Play className="h-4 w-4" />
                   Demo
                 </Link>
-                <a
-                  href={ORDER_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-green-500 px-6 py-3 text-sm font-semibold text-white shadow-md shadow-green-500/25 transition-all duration-300 hover:brightness-110 active:scale-95"
-                >
-                  <MessageCircle className="h-4 w-4" />
-                  Order Now
-                </a>
+                <OrderModal projectTitle="Sailormen" />
               </div>
             </div>
 
@@ -104,7 +92,7 @@ export default function SailormenPage() {
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
                   Sailormen is a boat booking platform that makes it easy to
                   find and reserve vessels. Browse boats, check availability
-                  and secure your trip — all in a clean, modern interface built
+                  and secure your trip â€” all in a clean, modern interface built
                   for smooth bookings.
                 </p>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
@@ -130,15 +118,7 @@ export default function SailormenPage() {
                 ))}
               </div>
 
-              <a
-                href={ORDER_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
-              >
-                <MessageCircle className="h-4 w-4" />
-                Interested? Order Sailormen on WhatsApp
-              </a>
+              <OrderModal projectTitle="Sailormen" variant="link" />
             </div>
           </div>
         </Container>
@@ -146,3 +126,4 @@ export default function SailormenPage() {
     </>
   );
 }
+

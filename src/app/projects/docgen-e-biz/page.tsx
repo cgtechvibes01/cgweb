@@ -1,18 +1,18 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { MessageCircle, Play, FileText, FileSpreadsheet, Printer, Server, ShieldCheck } from "lucide-react";
+import { Play, FileText, FileSpreadsheet, Printer, Server, ShieldCheck } from "lucide-react";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Badge } from "@/components/ui/Badge";
 import { Container } from "@/components/ui/Container";
+import { OrderModal } from "@/components/sections/OrderModal";
 import { PROJECTS } from "@/lib/projects";
-import { WHATSAPP_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "DocGen (E-Biz)",
   description:
-    "Explore the DocGen (E-Biz) webapp — generate payslips, receipts, invoices and quotations with a self-managing database.",
+    "Explore the DocGen (E-Biz) webapp â€” generate payslips, receipts, invoices and quotations with a self-managing database.",
 };
 
 const DOCGEN = PROJECTS.find((p) => p.title === "DocGen (E-Biz)")!;
@@ -40,7 +40,7 @@ const FEATURES = [
     icon: Server,
     title: "Auto Database",
     description:
-      "The system builds its own database and asset folders on first run — no setup needed.",
+      "The system builds its own database and asset folders on first run â€” no setup needed.",
   },
   {
     icon: ShieldCheck,
@@ -55,10 +55,6 @@ const FEATURES = [
       "Revenue, payroll and pending-invoice analytics with CSV export tools.",
   },
 ];
-
-const ORDER_URL = `${WHATSAPP_URL}?text=${encodeURIComponent(
-  "Hi CGTechVibes! I'm interested in the DocGen (E-Biz) webapp. Can you tell me more?"
-)}`;
 
 export default function DocGenPage() {
   return (
@@ -95,15 +91,7 @@ export default function DocGenPage() {
                   <Play className="h-4 w-4" />
                   Demo
                 </Link>
-                <a
-                  href={ORDER_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-green-500 px-6 py-3 text-sm font-semibold text-white shadow-md shadow-green-500/25 transition-all duration-300 hover:brightness-110 active:scale-95"
-                >
-                  <MessageCircle className="h-4 w-4" />
-                  Order Now
-                </a>
+                <OrderModal projectTitle="DocGen (E-Biz)" />
               </div>
             </div>
 
@@ -117,7 +105,7 @@ export default function DocGenPage() {
                   DocGen (E-Biz) is a document generation webapp for
                   businesses. Create payslips, receipts, invoices and
                   quotations with clean, printable output and company
-                  branding — all backed by a self-managing database that is
+                  branding â€” all backed by a self-managing database that is
                   created automatically on first run.
                 </p>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
@@ -143,15 +131,7 @@ export default function DocGenPage() {
                 ))}
               </div>
 
-              <a
-                href={ORDER_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
-              >
-                <MessageCircle className="h-4 w-4" />
-                Interested? Order DocGen (E-Biz) on WhatsApp
-              </a>
+              <OrderModal projectTitle="DocGen (E-Biz)" variant="link" />
             </div>
           </div>
         </Container>
@@ -159,3 +139,4 @@ export default function DocGenPage() {
     </>
   );
 }
+
