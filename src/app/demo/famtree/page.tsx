@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
-import { Home, MessageCircle } from "lucide-react";
-import { WHATSAPP_URL } from "@/lib/constants";
+import { OrderModal } from "@/components/sections/OrderModal";
+import { Home } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "FamTree Demo",
@@ -11,10 +11,6 @@ export const metadata: Metadata = {
 
 const DEMO_URL =
   "https://script.google.com/macros/s/AKfycbzDZie5ILnuSmJ0Z-XUQ8QLgvVabw8jv7O-HmJCkNYw32ISj1BmFqSthy0Dj_uZe9I/exec";
-
-const ORDER_URL = `${WHATSAPP_URL}?text=${encodeURIComponent(
-  "Hi CGTechVibes! I'm interested in the FamTree webapp. Can you tell me more?"
-)}`;
 
 export default function FamTreeDemoPage() {
   return (
@@ -27,15 +23,7 @@ export default function FamTreeDemoPage() {
           <Home className="h-4 w-4" />
           Back to Home
         </Link>
-        <a
-          href={ORDER_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 rounded-full bg-green-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-green-500/30 transition-all duration-300 hover:brightness-110 active:scale-95"
-        >
-          <MessageCircle className="h-4 w-4" />
-          Order Now
-        </a>
+        <OrderModal projectTitle="FamTree" variant="demo" />
       </div>
       <iframe
         src={DEMO_URL}
@@ -46,3 +34,4 @@ export default function FamTreeDemoPage() {
     </div>
   );
 }
+

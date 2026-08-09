@@ -6,7 +6,7 @@ import { WHATSAPP_URL } from "@/lib/constants";
 
 interface OrderModalProps {
   projectTitle: string;
-  variant?: "button" | "link";
+  variant?: "button" | "link" | "demo";
 }
 
 export function OrderModal({ projectTitle, variant = "button" }: OrderModalProps) {
@@ -65,11 +65,13 @@ export function OrderModal({ projectTitle, variant = "button" }: OrderModalProps
         className={
           variant === "button"
             ? "inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-green-500 px-6 py-3 text-sm font-semibold text-white shadow-md shadow-green-500/25 transition-all duration-300 hover:brightness-110 active:scale-95"
-            : "inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
+            : variant === "demo"
+              ? "inline-flex items-center gap-1.5 rounded-full bg-green-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-green-500/30 transition-all duration-300 hover:brightness-110 active:scale-95"
+              : "inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
         }
       >
         <MessageCircle className="h-4 w-4" />
-        {variant === "button" ? "Order Now" : `Interested? Order ${projectTitle} on WhatsApp`}
+        {variant === "button" ? "Order Now" : variant === "demo" ? "Order Now" : `Interested? Order ${projectTitle} on WhatsApp`}
       </button>
 
       {open && (
