@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import { MessageCircle, X } from "lucide-react";
 import { WHATSAPP_URL } from "@/lib/constants";
 
@@ -74,13 +75,14 @@ export function OrderModal({ projectTitle, variant = "button" }: OrderModalProps
         {variant === "button" ? "Order Now" : variant === "demo" ? "Order Now" : `Interested? Order ${projectTitle} on WhatsApp`}
       </button>
 
-      {open && (
-        <div
-          className="fixed inset-0 z-[80] flex items-end justify-center bg-black/60 p-4 backdrop-blur-sm sm:items-center"
-          onClick={(e) => {
-            if (e.target === e.currentTarget) closeModal();
-          }}
-        >
+      {open &&
+        createPortal(
+          <div
+            className="fixed inset-0 z-[80] flex items-end justify-center bg-black/60 p-4 backdrop-blur-sm sm:items-center"
+            onClick={(e) => {
+              if (e.target === e.currentTarget) closeModal();
+            }}
+          >
           <div className="w-full max-w-md rounded-2xl border border-border bg-background p-6 shadow-2xl">
             <div className="mb-4 flex items-start justify-between">
               <div>
@@ -179,8 +181,9 @@ export function OrderModal({ projectTitle, variant = "button" }: OrderModalProps
               </form>
             )}
           </div>
-        </div>
-      )}
+          </div>,
+          document.body
+        )}
     </>
   );
 }
