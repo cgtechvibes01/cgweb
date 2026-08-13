@@ -9,10 +9,22 @@ const IAB_PATTERN =
 
 export function InAppBrowserInterceptor() {
   const [copied, setCopied] = useState(false);
+  const [showHelp, setShowHelp] = useState(false);
   const [show, setShow] = useState<{
     isIOS: boolean;
     isAndroid: boolean;
   } | null>(null);
+
+  const openInBrowser = () => {
+    const pageUrl = window.location.href;
+    const fallbackUrl = encodeURIComponent(pageUrl);
+    const intentUrl = `intent://${pageUrl.replace(/^https?:\/\//, "")}#Intent;scheme=https;action=android.intent.action.VIEW;category=android.intent.category.BROWSABLE;package=com.android.chrome;S.browser_fallback_url=${fallbackUrl};end`;
+    try {
+      window.location.href = intentUrl;
+    } catch {
+      /* noop */
+    }
+  };
 
   useEffect(() => {
     const ua = navigator.userAgent;
@@ -26,14 +38,7 @@ export function InAppBrowserInterceptor() {
 
     // Auto-leave on Android: open the page in the default browser via intent.
     if (isAndroid) {
-      const pageUrl = window.location.href;
-      const fallbackUrl = encodeURIComponent(pageUrl);
-      const intentUrl = `intent://${pageUrl.replace(/^https?:\/\//, "")}#Intent;scheme=https;action=android.intent.action.VIEW;category=android.intent.category.BROWSABLE;package=com.android.chrome;S.browser_fallback_url=${fallbackUrl};end`;
-      try {
-        window.location.href = intentUrl;
-      } catch {
-        /* noop */
-      }
+      openInBrowser();
     }
   }, []);
 
@@ -64,39 +69,83 @@ export function InAppBrowserInterceptor() {
           default browser.
         </p>
 
-        <button
-          type="button"
-          onClick={() => {
-            window.location.href = window.location.href;
-          }}
-          className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-br from-primary to-accent px-5 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-all duration-300 hover:brightness-110 active:scale-95"
-        >
-          <ExternalLink className="h-4 w-4" />
-          Open in Browser
-        </button>
+        {show?.isAndroid && !showHelp && (
+          <button
+            type="button"
+            onClick={openInBrowser}
+            className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-br from-primary to-accent px-5 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-all duration-300 hover:brightness-110 active:scale-95"
+          >
+            <ExternalLink className="h-4 w-4" />
+            Open in Browser
+          </button>
+        )}
+
+        {show?.isIOS && !showHelp && (
+          <button
+            type="button"
+            onClick={() => setShowHelp(true)}
+            className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-br from-primary to-accent px-5 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-all duration-300 hover:brightness-110 active:scale-95"
+          >
+            <ExternalLink className="h-4 w-4" />
+            How to Open in Safari
+          </button>
+        )}
+
+        {showHelp && (
+          <div className="mt-6 rounded-2xl border border-border bg-muted/40 p-5 text-left">
+            <h2 className="text-sm font-semibold">
+              How to open in your browser
+            </h2>
+            <ol className="mt-3 space-y-3 text-sm text-muted-foreground">
+              <li className="flex gap-3">
+                <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-primary/15 text-xs font-bold text-primary">
+                  1
+                </span>
+                <span>
+                  Tap the menu icon
+                  <span className="mx-1 inline-grid h-4 w-4 place-items-center rounded-[4px] border border-muted-foreground text-[9px]">
+                    ⋯
+                  </span>
+                  at the top of the Facebook browser.
+                </span>
+              </li>
+              <li className="flex gap-3">
+                <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-primary/15 text-xs font-bold text-primary">
+                  2
+                </span>
+                <span>
+                  Choose{" "}
+                  <span className="font-medium text-foreground">
+                    Open in External Browser
+                  </span>
+                  .
+                </span>
+              </li>
+              <li className="flex gap-3">
+                <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-primary/15 text-xs font-bold text-primary">
+                  3
+                </span>
+                <span>Done — the page opens in Safari.</span>
+              </li>
+            </ol>
+            <button
+              type="button"
+              onClick={() => setShowHelp(false)}
+              className="mt-4 text-sm font-medium text-primary underline-offset-4 hover:underline"
+            >
+              Back
+            </button>
+          </div>
+        )}
 
         <button
           type="button"
           onClick={copyLink}
-          className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-muted/40 px-5 py-3 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted"
+          className={`flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-muted/40 px-5 py-3 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted ${showHelp ? "mt-4" : "mt-6"}`}
         >
           {copied ? "Link copied!" : <Copy className="h-4 w-4" />}
           {copied ? "Link copied!" : "Copy Link"}
         </button>
-
-        {show?.isIOS && (
-          <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
-            Tip: tap the share icon
-            <span className="mx-1 inline-grid h-4 w-4 place-items-center rounded-[4px] border border-muted-foreground text-[9px]">
-              ⬆
-            </span>
-            then choose
-            <span className="ml-1 font-medium text-foreground">
-              Open in Browser
-            </span>
-            .
-          </p>
-        )}
 
         <button
           type="button"
