@@ -1,4 +1,4 @@
-import { Building2, Cpu, FileCode2, FileText, GraduationCap, Map, BarChart3 } from "lucide-react";
+import { Building2, Cpu, FileCode2, FileText, GraduationCap, Map } from "lucide-react";
 import { BASE_PATH } from "@/lib/constants";
 import type { LucideIcon } from "lucide-react";
 
@@ -64,15 +64,6 @@ export const PROJECTS: Project[] = [
     image: projectImage("docugen"),
     link: "/projects/docgen-e-biz",
     href: "/projects/docgen-e-biz",
-  },
-  {
-    icon: BarChart3,
-    title: "Movie Dashboard",
-    tag: "Web App",
-    description:
-      "Media streaming dashboard with trending picks, search and watchlist tracking.",
-    image: projectImage("movie-dashboard"),
-    link: "/projects",
   },
   {
     icon: Cpu,

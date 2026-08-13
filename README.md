@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CGTechVibes — Official Website
 
-## Getting Started
+Company website for CGTechVibes — digital products, business solutions, web apps and websites. Built as a mobile-first Progressive Web App (PWA) with AI-ready architecture.
 
-First, run the development server:
+Live: https://cgtechvibes01.github.io/cgweb/
+
+## Tech Stack
+
+- Next.js 16 (App Router, static export)
+- React 19
+- Tailwind CSS v4
+- lucide-react icons
+- GitHub Pages deployment via GitHub Actions
+
+## Features
+
+- Project showcase with detail pages and live GAS webapp demos (iframe)
+- WhatsApp ordering flow per project (OrderModal)
+- Contact page with WhatsApp form + business info
+- PWA: installable, offline service worker, app manifest
+- Dark/light theme, glassmorphism nav, mobile bottom nav
+
+## Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev          # local dev server
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Build & Deploy
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The site is a static export. Build locally with the required base path:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+$env:NEXT_PUBLIC_BASE_PATH="/cgweb"; npm run build
+npm run lint
+```
 
-## Learn More
+`npm run build` outputs static files to `out/`. Pushing to `main` triggers the `Deploy to GitHub Pages` workflow (`.github/workflows/deploy.yml`) which builds with `NEXT_PUBLIC_BASE_PATH=/cgweb` and publishes the site.
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+src/
+├── app/            # Next.js routes (pages, demo, projects, contact, about, blog, legal)
+│   ├── projects/   # Project detail pages
+│   ├── demo/       # GAS webapp demo wrappers (iframe)
+│   └── manifest.ts # PWA manifest (dynamic, force-static)
+├── components/
+│   ├── layout/     # TopNav, BottomNav, Footer, PWA/theme providers
+│   └── sections/   # Hero, Features, ProjectsPreview, ContactForm, OrderModal
+├── lib/            # projects.ts, constants.ts, animations, utils
+└── hooks/          # useTheme, useMediaQuery
+```
