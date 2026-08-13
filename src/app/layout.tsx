@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { PWAProvider } from "@/components/providers/PWAProvider";
+import { InAppBrowserInterceptor } from "@/components/layout/InAppBrowserInterceptor";
 import { TopNav } from "@/components/layout/TopNav";
 import { BottomNav } from "@/components/layout/BottomNav";
 import { Footer } from "@/components/layout/Footer";
@@ -80,6 +81,7 @@ export default function RootLayout({
           <BottomNav />
         </ThemeProvider>
         <PWAProvider />
+        <InAppBrowserInterceptor />
       </body>
     </html>
   );
