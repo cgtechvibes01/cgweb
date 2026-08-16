@@ -2,7 +2,7 @@
 
 Company website for CGTechVibes — digital products, business solutions, web apps and websites. Built as a mobile-first Progressive Web App (PWA) with AI-ready architecture.
 
-Live: https://cgtechvibes01.github.io/cgweb/
+Live: https://cgtechvibe.github.io/cgweb/
 
 ## Tech Stack
 
