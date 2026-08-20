@@ -53,7 +53,7 @@ const themeScript = `
 (function() {
   try {
     var stored = localStorage.getItem('cgweb-theme');
-    var theme = stored === 'light' ? 'light' : 'dark';
+    var theme = stored === 'dark' ? 'dark' : 'light';
     document.documentElement.classList.toggle('dark', theme === 'dark');
   } catch (e) {}
 })();
@@ -68,7 +68,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} dark h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
