@@ -2,6 +2,7 @@ import Link from "next/link";
 import { SITE_NAME } from "@/lib/constants";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
+import { CmsLoginButton } from "@/components/layout/CmsLoginButton";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -58,6 +59,11 @@ export function Footer() {
                 <Link href="/privacy" className="hover:text-foreground">
                   Privacy Policy
                 </Link>
+              </li>
+              <li>
+                <span className="text-muted-foreground">
+                  <CmsLoginButton />
+                </span>
               </li>
             </ul>
           </div>

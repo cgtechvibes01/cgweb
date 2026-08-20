@@ -9,6 +9,8 @@ export const BLOG_URL = "https://chalspectrum.blogspot.com/";
 export const BLOG_API_URL =
   "https://script.google.com/macros/s/AKfycbxp09-5LkAEN-W5wO9UwZtwdejAhkT1NwOt9HHAYA1lNNtqIoWSrgrhjoxLNBoaoGQp/exec";
 
+export const CMS_URL = BLOG_API_URL;
+
 export const CONTACT_EMAIL = "cgtechvibes@gmail.com";
 export const CONTACT_PHONE = "+601125816662";
 export const WHATSAPP_URL = `https://wa.me/601125816662`;
