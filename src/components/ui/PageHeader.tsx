@@ -1,5 +1,6 @@
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
+import { Reveal } from "@/components/ui/Reveal";
 
 interface PageHeaderProps {
   title: string;
@@ -12,14 +13,22 @@ export function PageHeader({ title, subtitle, badge }: PageHeaderProps) {
     <section className="relative overflow-hidden pt-32 pb-12 md:pt-40 md:pb-16">
       <Container className="relative z-10">
         <div className="mx-auto max-w-2xl text-center">
-          {badge && <Badge>{badge}</Badge>}
-          <h1 className="mt-4 text-3xl font-black tracking-tight sm:text-4xl md:text-5xl">
-            {title}
-          </h1>
+          {badge && (
+            <Reveal>
+              <Badge>{badge}</Badge>
+            </Reveal>
+          )}
+          <Reveal delay={0.08}>
+            <h1 className="mt-4 text-3xl font-black tracking-tight sm:text-4xl md:text-5xl">
+              {title}
+            </h1>
+          </Reveal>
           {subtitle && (
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-              {subtitle}
-            </p>
+            <Reveal delay={0.16}>
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
+                {subtitle}
+              </p>
+            </Reveal>
           )}
         </div>
       </Container>

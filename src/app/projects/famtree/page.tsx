@@ -6,6 +6,7 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Badge } from "@/components/ui/Badge";
 import { Container } from "@/components/ui/Container";
+import { Reveal } from "@/components/ui/Reveal";
 import { OrderModal } from "@/components/sections/OrderModal";
 import { PROJECTS } from "@/lib/projects";
 
@@ -104,16 +105,18 @@ export default function FamTreePage() {
               </GlassCard>
 
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                {FEATURES.map((feature) => (
-                  <GlassCard key={feature.title} hover={false} className="p-5">
-                    <div className="bg-gradient-neon grid h-10 w-10 place-items-center rounded-xl text-white shadow-lg shadow-primary/25">
-                      <feature.icon className="h-5 w-5" />
-                    </div>
-                    <h3 className="mt-4 text-sm font-semibold">{feature.title}</h3>
-                    <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
-                      {feature.description}
-                    </p>
-                  </GlassCard>
+{FEATURES.map((feature, i) => (
+                  <Reveal key={feature.title} delay={i * 0.05}>
+                    <GlassCard hover={false} className="p-5">
+                      <div className="bg-gradient-neon grid h-10 w-10 place-items-center rounded-xl text-white shadow-lg shadow-primary/25">
+                        <feature.icon className="h-5 w-5" />
+                      </div>
+                      <h3 className="mt-4 text-sm font-semibold">{feature.title}</h3>
+                      <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
+                        {feature.description}
+                      </p>
+                    </GlassCard>
+                  </Reveal>
                 ))}
               </div>
 

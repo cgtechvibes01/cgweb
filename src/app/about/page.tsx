@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Container } from "@/components/ui/Container";
+import { Reveal } from "@/components/ui/Reveal";
 import { Lightbulb, Rocket, ShieldCheck, Target, HeartHandshake, Globe } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -73,16 +74,18 @@ export default function AboutPage() {
       <section className="pb-24 md:pb-32">
         <Container>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {VALUES.map((value) => (
-              <GlassCard key={value.title} className="h-full">
-                <div className="bg-gradient-neon mb-5 grid h-12 w-12 place-items-center rounded-xl text-white shadow-lg shadow-primary/25">
-                  <value.icon className="h-6 w-6" />
-                </div>
-                <h2 className="text-lg font-semibold">{value.title}</h2>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {value.text}
-                </p>
-              </GlassCard>
+            {VALUES.map((value, i) => (
+              <Reveal key={value.title} delay={i * 0.05}>
+                <GlassCard className="h-full">
+                  <div className="bg-gradient-neon mb-5 grid h-12 w-12 place-items-center rounded-xl text-white shadow-lg shadow-primary/25">
+                    <value.icon className="h-6 w-6" />
+                  </div>
+                  <h2 className="text-lg font-semibold">{value.title}</h2>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {value.text}
+                  </p>
+                </GlassCard>
+              </Reveal>
             ))}
           </div>
         </Container>

@@ -5,6 +5,7 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Badge } from "@/components/ui/Badge";
 import { Container } from "@/components/ui/Container";
+import { Reveal } from "@/components/ui/Reveal";
 import { PROJECTS } from "@/lib/projects";
 import { ArrowUpRight } from "lucide-react";
 
@@ -25,7 +26,7 @@ export default function ProjectsPage() {
       <section className="pb-24 md:pb-32">
         <Container>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {PROJECTS.map((project) => {
+            {PROJECTS.map((project, i) => {
               const card = (
                 <GlassCard key={project.title} className="group flex h-full flex-col">
                   {project.image && (
@@ -70,16 +71,19 @@ export default function ProjectsPage() {
               );
 
               return project.href ? (
-                <Link
-                  key={project.title}
-                  href={project.href}
-                  className="block"
-                  aria-label={`${project.title} project details`}
-                >
-                  {card}
-                </Link>
+                <Reveal key={project.title} delay={i * 0.05}>
+                  <Link
+                    href={project.href}
+                    className="block"
+                    aria-label={`${project.title} project details`}
+                  >
+                    {card}
+                  </Link>
+                </Reveal>
               ) : (
-                card
+                <Reveal key={project.title} delay={i * 0.05}>
+                  {card}
+                </Reveal>
               );
             })}
           </div>

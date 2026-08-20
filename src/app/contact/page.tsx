@@ -3,6 +3,7 @@ import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Container } from "@/components/ui/Container";
+import { Reveal } from "@/components/ui/Reveal";
 import { ContactForm } from "@/components/sections/ContactForm";
 import {
   CONTACT_EMAIL,
@@ -43,15 +44,16 @@ export default function ContactPage() {
       <section className="pb-24 md:pb-32">
         <Container>
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-5">
-            <div className="lg:col-span-3">
+            <Reveal className="lg:col-span-3" y={30}>
               <GlassCard hover={false}>
                 <ContactForm />
               </GlassCard>
-            </div>
+            </Reveal>
 
             <div className="space-y-6 lg:col-span-2">
-              {INFO.map((item) => (
-                <GlassCard key={item.label} hover={false}>
+              {INFO.map((item, i) => (
+                <Reveal key={item.label} delay={i * 0.08}>
+                  <GlassCard hover={false}>
                   <div className="flex items-start gap-4">
                     <div className="bg-gradient-brand grid h-11 w-11 shrink-0 place-items-center rounded-xl text-white shadow-lg shadow-primary/25">
                       <item.icon className="h-5 w-5" />
@@ -72,17 +74,19 @@ export default function ContactPage() {
                       )}
                     </div>
                   </div>
-                </GlassCard>
+                  </GlassCard>
+                </Reveal>
               ))}
 
-              <GlassCard hover={false}>
-                <div className="flex items-start gap-4">
-                  <div className="bg-gradient-brand grid h-11 w-11 shrink-0 place-items-center rounded-xl text-white shadow-lg shadow-primary/25">
-                    <Phone className="h-5 w-5" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-sm text-muted-foreground">Phone</p>
-                    <p className="font-semibold">{CONTACT_PHONE}</p>
+              <Reveal delay={0.16}>
+                <GlassCard hover={false}>
+                  <div className="flex items-start gap-4">
+                    <div className="bg-gradient-brand grid h-11 w-11 shrink-0 place-items-center rounded-xl text-white shadow-lg shadow-primary/25">
+                      <Phone className="h-5 w-5" />
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-sm text-muted-foreground">Phone</p>
+                      <p className="font-semibold">{CONTACT_PHONE}</p>
                     <div className="mt-3 flex flex-wrap gap-2">
                       <a
                         href={TEL_URL}
@@ -101,9 +105,10 @@ export default function ContactPage() {
                         WhatsApp
                       </a>
                     </div>
+</div>
                   </div>
-                </div>
-              </GlassCard>
+                </GlassCard>
+              </Reveal>
             </div>
           </div>
         </Container>
