@@ -7,7 +7,7 @@ export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
 export const BLOG_URL = "https://chalspectrum.blogspot.com/";
 
 export const BLOG_API_URL =
-  "https://script.google.com/macros/s/AKfycbxp09-5LkAEN-W5wO9UwZtwdejAhkT1NwOt9HHAYA1lNNtqIoWSrgrhjoxLNBoaoGQp/exec";
+  "https://script.google.com/macros/s/AKfycbxUr9MVZaKRjb1haAUr9MAAd21uDRqhZ6yS339w-hQcnEnkykjutTSacVfqZCAUoEdr/exec";
 
 export const CMS_URL = BLOG_API_URL;
 
