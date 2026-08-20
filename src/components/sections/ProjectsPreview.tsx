@@ -63,7 +63,7 @@ export function ProjectsPreview() {
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                       className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="bg-gradient-orange absolute left-3 top-3 z-10 grid h-10 w-10 place-items-center rounded-xl text-white shadow-lg backdrop-blur">
+                    <div className="bg-gradient-neon absolute left-3 top-3 z-10 grid h-10 w-10 place-items-center rounded-xl text-white shadow-lg backdrop-blur">
                       {project.icon && <project.icon className="h-5 w-5" />}
                     </div>
                   </div>

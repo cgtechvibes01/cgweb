@@ -75,7 +75,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {VALUES.map((value) => (
               <GlassCard key={value.title} className="h-full">
-                <div className="bg-gradient-orange mb-5 grid h-12 w-12 place-items-center rounded-xl text-white shadow-lg shadow-primary/25">
+                <div className="bg-gradient-neon mb-5 grid h-12 w-12 place-items-center rounded-xl text-white shadow-lg shadow-primary/25">
                   <value.icon className="h-6 w-6" />
                 </div>
                 <h2 className="text-lg font-semibold">{value.title}</h2>

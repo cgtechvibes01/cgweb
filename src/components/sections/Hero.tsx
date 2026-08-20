@@ -26,7 +26,7 @@ export function Hero() {
             custom={1}
             className="mt-6 text-4xl font-black leading-tight tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
           >
-            Build your <span className="text-gradient">digital empire</span>{" "}
+            Build your <span className="text-gradient glow-text">digital empire</span>{" "}
             with us
           </motion.h1>
 
@@ -69,13 +69,13 @@ export function Hero() {
       {/* Decorative floating orbs */}
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute -top-20 right-[-10%] h-72 w-72 rounded-full bg-primary/20 blur-3xl"
+        className="pointer-events-none absolute -top-20 right-[-10%] h-72 w-72 rounded-full bg-primary/25 blur-3xl"
         animate={{ y: [0, 30, 0], scale: [1, 1.1, 1] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute bottom-[-10%] left-[-8%] h-80 w-80 rounded-full bg-accent/15 blur-3xl"
+        className="pointer-events-none absolute bottom-[-10%] left-[-8%] h-80 w-80 rounded-full bg-accent/25 blur-3xl"
         animate={{ y: [0, -25, 0], scale: [1.1, 1, 1.1] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />

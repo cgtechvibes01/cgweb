@@ -107,7 +107,7 @@ export default function EduManageProPage() {
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {FEATURES.map((feature) => (
                   <GlassCard key={feature.title} hover={false} className="p-5">
-                    <div className="bg-gradient-orange grid h-10 w-10 place-items-center rounded-xl text-white shadow-lg shadow-primary/25">
+                    <div className="bg-gradient-neon grid h-10 w-10 place-items-center rounded-xl text-white shadow-lg shadow-primary/25">
                       <feature.icon className="h-5 w-5" />
                     </div>
                     <h3 className="mt-4 text-sm font-semibold">{feature.title}</h3>
