@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SITE_NAME, BLOG_URL } from "@/lib/constants";
+import { SITE_NAME } from "@/lib/constants";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 
@@ -48,11 +48,6 @@ export function Footer() {
                 <Link href="/blog" className="hover:text-foreground">
                   Blog
                 </Link>
-              </li>
-              <li>
-                <a href={BLOG_URL} target="_blank" rel="noopener noreferrer" className="hover:text-foreground">
-                  Blogspot
-                </a>
               </li>
               <li>
                 <Link href="/terms" className="hover:text-foreground">
