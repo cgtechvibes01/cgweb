@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 const CMS_EMBED_URL =
-  "https://script.google.com/macros/s/AKfycbxUr9MVZaKRjb1haAUr9MAAd21uDRqhZ6yS339w-hQcnEnkykjutTSacVfqZCAUoEdr/exec";
+  "https://script.google.com/macros/s/AKfycbyz16TXQqjHHGsxbw0zzcvj9unW5gIh0KBtoDnm_KE4AQmQR_CKv00uvH8-PijEFINr/exec";
 
 export default function CmsPage() {
   return (

@@ -1,8 +1,8 @@
 "use client";
 
-import { useCallback, useEffect, useState, Suspense } from "react";
+import { useCallback, useEffect, useRef, useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { ArrowLeft, ArrowUpRight, Calendar, Tag } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Calendar, ChevronLeft, ChevronRight, Tag } from "lucide-react";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Badge } from "@/components/ui/Badge";
 import { Reveal } from "@/components/ui/Reveal";
@@ -13,6 +13,7 @@ interface PostMeta {
   slug: string;
   date: string;
   tags: string[];
+  images?: string[];
   description: string;
 }
 
@@ -38,6 +39,85 @@ function formatDate(date: string) {
   return isNaN(d.getTime())
     ? date
     : d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+}
+
+function Gallery({ images }: { images: string[] }) {
+  const [index, setIndex] = useState(0);
+  const total = images.length;
+  const touchX = useRef<number | null>(null);
+
+  const go = useCallback(
+    (dir: number) => setIndex((i) => (i + dir + total) % total),
+    [total]
+  );
+
+  if (!total) return null;
+
+  return (
+    <div className="mb-8">
+      <div
+        className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-border bg-muted sm:aspect-[16/9]"
+        onTouchStart={(e) => {
+          touchX.current = e.touches[0].clientX;
+        }}
+        onTouchEnd={(e) => {
+          if (touchX.current === null || total < 2) return;
+          const dx = e.changedTouches[0].clientX - touchX.current;
+          if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
+          touchX.current = null;
+        }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={images[index]}
+          alt={`${index + 1} of ${total}`}
+          className="h-full w-full cursor-pointer object-contain"
+          onClick={() => total > 1 && go(1)}
+          draggable={false}
+        />
+        {total > 1 && (
+          <>
+            <button
+              onClick={() => go(-1)}
+              aria-label="Previous image"
+              className="absolute left-3 top-1/2 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full bg-black/55 text-white backdrop-blur transition-colors hover:bg-black/80"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <button
+              onClick={() => go(1)}
+              aria-label="Next image"
+              className="absolute right-3 top-1/2 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full bg-black/55 text-white backdrop-blur transition-colors hover:bg-black/80"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+            <span className="absolute bottom-3 right-3 rounded-full bg-black/65 px-3 py-1 text-xs font-semibold text-white">
+              {index + 1}/{total}
+            </span>
+          </>
+        )}
+      </div>
+      {total > 1 && (
+        <div className="scrollbar-hide mt-3 flex gap-2 overflow-x-auto pb-1">
+          {images.map((url, i) => (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              key={url + i}
+              src={url}
+              alt=""
+              onClick={() => setIndex(i)}
+              className={`h-16 w-16 flex-none cursor-pointer rounded-xl border-2 object-cover transition-all ${
+                i === index
+                  ? "border-primary shadow-[0_0_0_2px] shadow-primary/25"
+                  : "border-border opacity-70 hover:opacity-100"
+              }`}
+              draggable={false}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
 }
 
 function BlogContent() {
@@ -114,6 +194,7 @@ function BlogContent() {
           All posts
         </button>
         <GlassCard className="p-6 sm:p-10">
+          <Gallery images={post.images || []} />
           <div className="flex flex-wrap items-center gap-3">
             {post.tags?.map((t) => (
               <Badge key={t}>{t}</Badge>
@@ -158,6 +239,22 @@ function BlogContent() {
             aria-label={`Read ${p.title}`}
           >
             <GlassCard className="group flex h-full flex-col">
+              {p.images?.[0] ? (
+                <div className="relative mb-5 aspect-[2/1] w-full overflow-hidden rounded-xl">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={p.images[0]}
+                    alt=""
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    draggable={false}
+                  />
+                  {p.images.length > 1 && (
+                    <span className="absolute bottom-2 right-2 rounded-full bg-black/65 px-2 py-0.5 text-[11px] font-semibold text-white">
+                      {p.images.length} photos
+                    </span>
+                  )}
+                </div>
+              ) : null}
               <div className="flex items-center justify-between">
                 {p.tags?.[0] ? (
                   <Badge>{p.tags[0]}</Badge>
